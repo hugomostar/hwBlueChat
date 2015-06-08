@@ -1,9 +1,10 @@
 <?php
 
-class Role
-{	
+class Forum {
+	
 	private $id;
 	private $name;
+	private $description;
 	private $status;
 	
 	public function __construct($data,$required) {
@@ -11,10 +12,6 @@ class Role
 		for ($i = 0; $i < count($required); $i++) { 
 			$this->$required[$i] = $data["$required[$i]"];
 		}
- 		
-		return $this;
 	}
-	
-	
 	
 }
