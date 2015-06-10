@@ -25,8 +25,14 @@ class rolePermission_controller {
 		return "Korisnik nije logiran";					
 	}	
 		
-	$user = rolePermission::getById($userId);	
-	return $user;	
+	$user = rolePermission::getById($userId);
+	
+	if($user) {	
+		return $user;	
+		} else {
+		return "Korisnik nema privilegije";
+		}
+		
 	}
 
 }
