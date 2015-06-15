@@ -15,9 +15,6 @@
 
 		public function login() {
 
-			include 'model/user.php';
-			include 'model/token.php';
-			include 'model/log.php';
 			$token = isset($_COOKIE['token']) ? $_COOKIE['token'] : NULL;
 			$db = Baza::$db;
 			$user = new User($this->data,array('username', 'password'));
