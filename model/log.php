@@ -12,7 +12,7 @@ class Log
 	}
 	
 	
-		public function createLogout($idUser)
+	public function createLogout($idUser)
 	{
 		
 		$db = Baza::$db;		

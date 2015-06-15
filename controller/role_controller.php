@@ -4,20 +4,23 @@
 	require_once "model/role.php";
 	require_once "model/rolePermission.php";
 	require_once "model/token.php";
-	class role_controller {
+
+	class role_controller 
+	{
+
 		private $data;
-		public
-		function __construct($data){
+
+		public function __construct($data){
 			$this->data = $data;
 		}
 
-		public
-		function addRole(){
+		public function addRole(){
+
 			$checkToken = new Token();
 			$userId = $checkToken->isLogedIn();
 			
 			if (empty($userId)) {
-				return "Korisnik nije logiran";
+				return "User is not logged in!";
 			}
 
 			$user = rolePermission::getById($userId);
@@ -25,16 +28,15 @@
 			if ($user[0]->hasPrivilege("3")) {
 				$role = new role($this->data, array('name'));
 				$result = $role->addRole();
-				return "UspjeÅ¡no dodana rola '$result'";
+				return "Successfully added role '$result'";
 			} else {
-				return "Nemate privilegije za ovu akciju";
+				return "You don't have privileges for this action";
 			}
 
 			return $user;
 		}
 
-		public
-		function changeStatus() {
+		public function changeStatus() {
 			$role = new Role($this->data, array('name', 'status'));
 			$role->changeRoleStatus();
 		}

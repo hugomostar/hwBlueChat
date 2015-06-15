@@ -5,29 +5,30 @@
 	include 'model/user.php';
 	include 'helper/validate.php';
 	include 'model/log.php';
-	class user_controller{
+ 
+	class user_controller {
 		private $data;
 		public
 		function __construct($data){
 			$this->data = $data;
 		}
 
-		public
-		function login() {
+		public function login() {
+
 			include 'model/user.php';
 			include 'model/token.php';
 			include 'model/log.php';
-			$token = isset($_COOKIE['token']) ? $_COOKIE['token'] :
-			NULL;
+			$token = isset($_COOKIE['token']) ? $_COOKIE['token'] : NULL;
 			$db = Baza::$db;
 			$user = new User($this->data,array('username', 'password'));
 			$checkToken = new Token();
 			$tokenValidateResult = $checkToken->isLogedIn($token);
 			
 			if ($tokenValidateResult) {
+
 				return ("Korisnik je logiran <br> Idi na <a href='http://www.w3schools.com'>Chat</a> <br> ili se odjavite:
 					    <br><form name='form1' method='POST' action='api.php'> 
-					    <input type='hidden' name='controller' value='user_controller'> <input type='submit' name='action' value='Logout'>");
+					    <input type='hidden' name='controller' value='user_controller'> <input type='submit' 						    name='action' value='Logout'>");
 			}
 
 			$username = $db->real_escape_string($user->username);
@@ -35,7 +36,7 @@
 			$result = $user->login($username, $password);
 			
 			if ($result->num_rows === 0) {
-				return "Pogresan username ili password";
+				return "Wrong username or password!";
 			}
 
 			$userID = $result->fetch_object();
@@ -43,11 +44,11 @@
 			$log = new Log();
 			$token->create($userID->id);
 			$log->createLogin($userID->id);
-			return "Korisnik $userID->id se uspjesno logirao";
+			return "User $userID->id successfully logged in!";
 		}
 
-		public
-		function register() {
+		public function register() {
+
 			$db = Baza::$db;
 			$user = new User($this->data,array('username', 'password', 'firstname', 'lastname', 'email'));
 			
@@ -70,28 +71,27 @@
 			$result = $user->register($username, $password, $firstname, $lastname, $email);
 			
 			if ($result) {
-				return "UspjeÅ¡no registriran korisnik '$username'.";
+				return "Successfully registered '$username'.";
 			} else {
 				return false;
 			}
 
 		}
 
-		public
-		function logout() {
+		public function logout() {
 			$tok = new Token();
 			$result = $tok->delete();
 			
 			if($result) {
-				return "Korisnik $result se uspjesno odjavio";
+				return "User $result successfully logged out!";
 			} else {
-				return "Niste prijavljeni";
+				return "You are not logged in!";
 			}
 
 		}
 
-		public
-		function check() {
+		public function check() {
+
 			$sql="SELECT * FROM user WHERE username = '".$this->data['username']."' OR email = '".$this->data['email']."'";
 			$result = Baza::$db->query($sql);
 			
@@ -103,13 +103,13 @@
 
 		}
 
-		public
-		function editProfile() {
+		public function editProfile() {
+
 			$checkToken = new Token();
 			$userID = $checkToken->isLogedIn();
 			
 			if (empty($userID)) {
-				return "Korisnik nije logiran";
+				return "User is not logged in!";
 			}
 
 			$user = new User($this->data,array('password', 'firstname', 'lastname', 'email'));

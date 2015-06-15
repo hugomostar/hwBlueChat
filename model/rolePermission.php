@@ -1,13 +1,14 @@
 <?php
 	include "model/user.php";
-	class rolePermission{
+
+	class rolePermission {
 		private $userId;
 		private $dateAssigned;
 		private $roleId;
 		private $permissionId;
 		private $permissions;
-		public
-		function __construct($data,$required){
+
+		public function __construct($data,$required){
 			$this->permissions = array();
 			for ($i = 0; $i < count($required); $i++) {
 				$this->$required[$i] = $data["$required[$i]"];
@@ -15,8 +16,7 @@
 
 		}
 
-		public static
-		function getById($userId) {
+		public static function getById($userId) {
 			
 			if (!empty($userId)) {
 				$privUser = new rolePermission($userId, array('userId'));
@@ -28,8 +28,7 @@
 
 		}
 
-		protected
-		function initRoles() {
+		protected function initRoles() {
 			$this->roleId = array();
 			$sql = "SELECT userRole.roleId, role.name FROM userRole 
 				JOIN role ON userRole.roleId = role.id WHERE userRole.userId = ? AND role.status = 'active'";
@@ -43,8 +42,7 @@
 
 		}
 
-		public static
-		function getRolePerms($role_id) {
+		public static function getRolePerms($role_id) {
 			$role = new rolePermission();
 			$sql = "SELECT permission.id, permission.permission FROM rolePermission 
                 JOIN permission ON rolePermission.permissionId = permission.id
@@ -68,14 +66,12 @@
 		}
 
 		// provjeri ima li rola odreÄ�enu permisiju
-		public
-		function hasPerm($permission) {
+		public function hasPerm($permission) {
 			return isset($this->permissions[$permission]);
 		}
 
 		// provjeri ima li korisnik odreÄ�enu permisiju 
-		public
-		function hasPrivilege($perm) {
+		public function hasPrivilege($perm) {
 			foreach ($this->roles as $role) {
 				
 				if ($role->hasPerm($perm)) {

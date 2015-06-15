@@ -1,10 +1,11 @@
 <?php
-	class Role{
+	class Role {
 		private $permissions;
 		private $name;
 		private $status;
-		public
-		function __construct($data,$required) {
+
+		public function __construct($data,$required) {
+
 			$this->permissions = array();
 			for ($i = 0; $i < count($required); $i++) {
 				$this->$required[$i] = $data["$required[$i]"];
@@ -12,8 +13,7 @@
 
 		}
 
-		public
-		function addRole() {
+		public function addRole() {
 			$sql = "INSERT INTO role (name) "   ."VALUES (?)";
 			$result = Baza::$db->prepare($sql);
 			$result->bind_param("s", $this->name);
@@ -27,8 +27,7 @@
 			return $this->name;
 		}
 
-		public
-		function changeRoleStatus() {
+		public function changeRoleStatus() {
 			$sql = "UPDATE role set status = ? WHERE name = ?";
 			$result = Baza::$db->prepare($sql);
 			$result->bind_param("ss", $this->status, $this->name);
