@@ -53,9 +53,7 @@
 			if (!$sth->execute()) {
 				echo "Execute failed: (" . $sth->errno . ") " . $sth->error;
 				die();
-				die();
 			}
-
 			//$sth->execute();  
 			$result1 = $sth->get_result();
 			while($row = $result1->fetch_array()){

@@ -23,14 +23,10 @@
 			
 			if ($tokenValidateResult) {
 
-				return ("Korisnik je logiran <br> Idi na <a href='http://www.w3schools.com'>Chat</a> <br> ili se odjavite:
-					    <br><form name='form1' method='POST' action='api.php'> 
-					    <input type='hidden' name='controller' value='user_controller'> <input type='submit' 						    name='action' value='Logout'>");
+				return "Korisnik je logiran";
 			}
 
-			$username = $db->real_escape_string($user->username);
-			$password = md5($db->real_escape_string($user->password));
-			$result = $user->login($username, $password);
+			$result = $user->login($user->username, $user->password);
 			
 			if ($result->num_rows === 0) {
 				return "Wrong username or password!";
@@ -60,15 +56,10 @@
 				return $validResult;
 			}
 
-			$username = $db->real_escape_string($user->username);
-			$password = md5($db->real_escape_string($user->password));
-			$firstname = $db->real_escape_string($user->firstname);
-			$lastname = $db->real_escape_string($user->lastname);
-			$email = $db->real_escape_string($user->email);
-			$result = $user->register($username, $password, $firstname, $lastname, $email);
+			$result = $user->register($user->username, $user->password, $user->firstname, $user->lastname, $user->email);
 			
 			if ($result) {
-				return "Successfully registered '$username'.";
+				return "Successfully registered '$user->username'.";
 			} else {
 				return false;
 			}

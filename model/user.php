@@ -9,8 +9,7 @@ class User
 	public $email;
 
 	public function __construct($data,$required)
-	{
-		
+	{		
 		for ($i = 0; $i < count($required); $i++) { 
 			$this->$required[$i] = $data["$required[$i]"];
 		}
@@ -18,29 +17,34 @@ class User
 
 	public function updateUserProfile($name, $arg, $userID) {
 		
-		$sql = "UPDATE user set $name = '$arg' WHERE id = '$userID'"; 
-		$result = Baza::$db->query($sql);
-		return $result;
+		$sql = "UPDATE user set ? = ? WHERE id = ?"; 
+		$result = Baza::$db->prepare($sql);
+		$result->bind_param("ssi", $name, $arg, $userID);	
+		$result->execute();
+		$res = $result->get_result();
+		return $res;
 		
 		}
 	
 	public function login($username, $password) {
 		
-		$sql = "SELECT * FROM user "
-			   ." WHERE username = '$username' AND password = '$password'";			   
-		$result = Baza::$db->query($sql);
-		return $result;
+		$password = md5($password);
+		$sql = "SELECT * FROM user WHERE username = ? AND password = ?";		
+		$result = Baza::$db->prepare($sql);
+		$result->bind_param("ss", $username, $password);	
+		$result->execute();
+		$res = $result->get_result();
+		return $res;
 		
 		}
 	
-	public function register($username, $password, $firstname, $lastname, $email) {
+	public function register($username, $password, $firstname, $lastname, $email) {		
 		
-		
-		$sql = "INSERT INTO user (username, password, name, surname, email) "
-			   ."VALUES ('$username', '$password', '$firstname', '$lastname', '$email')"; 	
-		$result = Baza::$db->query($sql);
+		$sql = "INSERT INTO user (username, password, name, surname, email) VALUES (?, ?, ?, ?, ?)"; 	
+		$result = Baza::$db->prepare($sql);
+		$result->bind_param("sssss", $username, $password, $firstname, $lastname, $email);	
+		$result->execute();
 		return $result;
-		
 		}
 
 }

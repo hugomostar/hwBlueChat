@@ -37,6 +37,7 @@
 		}
 
 		public function changeStatus() {
+			
 			$role = new Role($this->data, array('name', 'status'));
 			$role->changeRoleStatus();
 		}

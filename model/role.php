@@ -14,13 +14,15 @@
 		}
 
 		public function addRole() {
-			$sql = "INSERT INTO role (name) "   ."VALUES (?)";
+			$sql = "INSERT INTO role (name) VALUES (?)";
 			$result = Baza::$db->prepare($sql);
 			$result->bind_param("s", $this->name);
+			
 			/*if (!$result->execute()) {
 			echo "Execute failed: (" . $result->errno . ") " . $result->error; 
 			die();
 			}*/
+			
 			$result->execute();
 			$this->status = 'active';
 			self::changeRoleStatus();
@@ -32,6 +34,7 @@
 			$result = Baza::$db->prepare($sql);
 			$result->bind_param("ss", $this->status, $this->name);
 			$result->execute();
+			return $this->name;
 		}
 
 	}
