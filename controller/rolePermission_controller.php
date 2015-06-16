@@ -12,22 +12,10 @@
 			$this->data = $data;
 		}
 
-		public function getUserPermissions(){
+		public function getUserPermissions($userId){
 
-			$checkToken = new Token();
-			$userId = $checkToken->isLogedIn();
-			
-			if (empty($userId)) {
-				return "User is not logged in!";
-			}
-
-			$user = rolePermission::getById($userId);
-			
-			if($user[1]) {
-				return $user[1];
-			} else {
-				return "User don't have privileges!";
-			}
+			$user = rolePermission::getById($userId);		
+			return $user->roles;
 
 		}
 

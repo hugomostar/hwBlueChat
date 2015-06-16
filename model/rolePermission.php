@@ -9,7 +9,6 @@
 		private $permissions;
 
 		public function __construct($data,$required){
-			$this->permissions = array();
 			for ($i = 0; $i < count($required); $i++) {
 				$this->$required[$i] = $data["$required[$i]"];
 			}
@@ -21,7 +20,7 @@
 			if (!empty($userId)) {
 				$privUser = new rolePermission($userId, array('userId'));
 				$privUser->initRoles();
-				return array($privUser, $privUser->roles);
+				return $privUser;
 			} else {
 				return false;
 			}
@@ -29,7 +28,6 @@
 		}
 
 		protected function initRoles() {
-			$this->roleId = array();
 			$sql = "SELECT userRole.roleId, role.name FROM userRole 
 				JOIN role ON userRole.roleId = role.id WHERE userRole.userId = ? AND role.status = 'active'";
 			$sth = Baza::$db->prepare($sql);
@@ -57,7 +55,7 @@
 			//$sth->execute();  
 			$result1 = $sth->get_result();
 			while($row = $result1->fetch_array()){
-				$role->permissions[$row["id"]] = $row["permission"];
+				$role->permissions[$row["permission"]] = $row["id"];
 			}
 
 			return $role;

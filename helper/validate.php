@@ -9,8 +9,7 @@ class Valid {
 			foreach ($args as $key => $element) {
 				if (empty($element)) {
 					array_push($error, "Invalid '$key'");
-				}
-		
+				}		
 				else if (strlen($element) < 3) {
 					array_push($error, "Invalid  '$key'  length");
 				}

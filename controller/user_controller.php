@@ -2,9 +2,12 @@
 	require_once "DAL/baza.php";
 	require_once "DAL/db.php";
 	include 'model/token.php';
-	include 'model/user.php';
+	//include 'model/user.php';
 	include 'helper/validate.php';
 	include 'model/log.php';
+	require_once "model/rolePermission.php";
+
+
  
 	class user_controller {
 		private $data;

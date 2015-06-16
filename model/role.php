@@ -18,12 +18,11 @@
 			$result = Baza::$db->prepare($sql);
 			$result->bind_param("s", $this->name);
 			
-			/*if (!$result->execute()) {
+			if (!$result->execute()) {
 			echo "Execute failed: (" . $result->errno . ") " . $result->error; 
 			die();
-			}*/
+			}
 			
-			$result->execute();
 			$this->status = 'active';
 			self::changeRoleStatus();
 			return $this->name;

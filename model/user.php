@@ -17,9 +17,9 @@ class User
 
 	public function updateUserProfile($name, $arg, $userID) {
 		
-		$sql = "UPDATE user set ? = ? WHERE id = ?"; 
-		$result = Baza::$db->prepare($sql);
-		$result->bind_param("ssi", $name, $arg, $userID);	
+		$sql = "UPDATE user set $name = ? WHERE id = ?"; 
+		$result = Baza::$db->prepare($sql);		
+		$result->bind_param("si", $arg, $userID);	
 		$result->execute();
 		$res = $result->get_result();
 		return $res;
