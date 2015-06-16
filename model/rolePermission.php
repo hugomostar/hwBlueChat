@@ -6,7 +6,7 @@
 		private $dateAssigned;
 		private $roleId;
 		private $permissionId;
-		private $permissions;
+		public $permissions;
 
 		public function __construct($data,$required){
 			for ($i = 0; $i < count($required); $i++) {

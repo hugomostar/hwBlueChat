@@ -40,7 +40,14 @@ if(in_array($action, $guestActions)) {
 	}
 } else {			
 
+if (!empty($userId)){
 $userPerm = rolePermission::getById($userId);
+} else {
+		$result["data"] = "You have to be logged in for this action!";
+		$result["success"] = false;
+		print_r($result);
+		exit();
+	}
 
 if($userPerm->hasPrivilege($action)) {
 	$result["data"] = $controller->$action($userId);

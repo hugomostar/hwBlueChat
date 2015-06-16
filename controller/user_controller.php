@@ -2,7 +2,6 @@
 	require_once "DAL/baza.php";
 	require_once "DAL/db.php";
 	include 'model/token.php';
-	//include 'model/user.php';
 	include 'helper/validate.php';
 	include 'model/log.php';
 	require_once "model/rolePermission.php";
@@ -18,16 +17,8 @@
 
 		public function login() {
 
-			$token = isset($_COOKIE['token']) ? $_COOKIE['token'] : NULL;
 			$db = Baza::$db;
 			$user = new User($this->data,array('username', 'password'));
-			$checkToken = new Token();
-			$tokenValidateResult = $checkToken->isLogedIn($token);
-			
-			if ($tokenValidateResult) {
-
-				return "Korisnik je logiran";
-			}
 
 			$result = $user->login($user->username, $user->password);
 			
@@ -40,23 +31,24 @@
 			$log = new Log();
 			$token->create($userID->id);
 			$log->createLogin($userID->id);
+			
 			return "User $userID->id successfully logged in!";
 		}
 
 		public function register() {
+			
+			$valid = new Valid();
+			$validResult = $valid->isValid($this->data);
+			
+			if (!empty($validResult)){
+				return $validResult;
+			}
 
 			$db = Baza::$db;
 			$user = new User($this->data,array('username', 'password', 'firstname', 'lastname', 'email'));
 			
 			if ($this->check()==TRUE){
 				return "Username or e-mail already registered.";
-			}
-
-			$valid = new Valid();
-			$validResult = $valid->isValid($this->data);
-			
-			if (!empty($validResult)){
-				return $validResult;
 			}
 
 			$result = $user->register($user->username, $user->password, $user->firstname, $user->lastname, $user->email);
@@ -70,6 +62,7 @@
 		}
 
 		public function logout() {
+			
 			$tok = new Token();
 			$result = $tok->delete();
 			
@@ -95,13 +88,6 @@
 		}
 
 		public function editProfile() {
-
-			$checkToken = new Token();
-			$userID = $checkToken->isLogedIn();
-			
-			if (empty($userID)) {
-				return "User is not logged in!";
-			}
 
 			$user = new User($this->data,array('password', 'firstname', 'lastname', 'email'));
 			$changed = array();

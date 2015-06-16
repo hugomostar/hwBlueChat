@@ -37,23 +37,20 @@ class Token
 	public function delete()
 	{
 	 	$db = Baza::$db;
-				
-		if (empty($_COOKIE['token'])) {				
-			return false;					
-		}		
-       		 $sqlLog = "SELECT userID FROM token WHERE value = '".$_COOKIE['token']."'";
-       		 $r=$db->query($sqlLog);
-       	 	 $u = $r->fetch_object();
-       	 	 $log = new Log();
-       		 $log->createLogout($u->userID);
+					
+       	$sqlLog = "SELECT userID FROM token WHERE value = '".$_COOKIE['token']."'";
+       	$r=$db->query($sqlLog);
+       	$u = $r->fetch_object();
+       	$log = new Log();
+       	$log->createLogout($u->userID);
 		
-		if(isset($_COOKIE['token'])) {
-			$sql = "UPDATE token SET validTo = NOW() WHERE value = '".$_COOKIE['token']."'";	
-			$db->query($sql);
-			setcookie("token", '', -1);
-			$_COOKIE['token'] = null;			
-			return TRUE;
-		} 
+		$sql = "UPDATE token SET validTo = NOW() WHERE value = '".$_COOKIE['token']."'";	
+		$db->query($sql);
+		setcookie("token", '', -1);
+		$_COOKIE['token'] = null;	
+					
+		return $u->userID;	
+		
 	}
 	
 	private function generate()
