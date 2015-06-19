@@ -17,7 +17,7 @@ if( file_exists("controller/{$controller}.php") ) {
 $controller = new $controller($params); 
 
 //check if method from controller exists, if it doesn't - stop
-
+ 
 if( method_exists($controller, $action) === false ) {
     $result['success'] = false;
 	die("Action doesn't exit.");
