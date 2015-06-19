@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 09, 2015 at 04:10 PM
+-- Generation Time: Jun 19, 2015 at 02:14 PM
 -- Server version: 10.0.14-MariaDB
 -- PHP Version: 5.5.18
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `forum` (
 `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_croatian_mysql561_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `log` (
 `id` int(10) unsigned NOT NULL,
   `userID` int(10) unsigned NOT NULL,
   `dt` datetime NOT NULL,
-  `type` char(32) COLLATE utf8_croatian_mysql561_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+  `type` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `log`
@@ -155,7 +155,75 @@ INSERT INTO `log` (`id`, `userID`, `dt`, `type`) VALUES
 (104, 1, '2015-06-09 13:31:04', 'Login'),
 (105, 1, '2015-06-09 14:06:37', 'Logout'),
 (106, 3, '2015-06-09 14:06:45', 'Login'),
-(107, 3, '2015-06-09 14:09:47', 'Logout');
+(107, 3, '2015-06-09 14:09:47', 'Logout'),
+(108, 3, '2015-06-10 10:25:20', 'Login'),
+(109, 3, '2015-06-10 10:26:40', 'Logout'),
+(110, 1, '2015-06-10 10:26:51', 'Login'),
+(111, 1, '2015-06-10 10:27:36', 'Logout'),
+(112, 3, '2015-06-10 10:27:45', 'Login'),
+(113, 3, '2015-06-10 10:40:49', 'Logout'),
+(114, 1, '2015-06-10 10:41:00', 'Login'),
+(115, 1, '2015-06-10 10:41:46', 'Logout'),
+(116, 3, '2015-06-10 10:41:58', 'Login'),
+(117, 3, '2015-06-10 11:53:18', 'Logout'),
+(118, 1, '2015-06-10 11:53:26', 'Login'),
+(119, 3, '2015-06-15 10:56:06', 'Login'),
+(120, 3, '2015-06-15 12:51:42', 'Logout'),
+(121, 1, '2015-06-15 13:05:05', 'Login'),
+(122, 1, '2015-06-15 13:05:12', 'Logout'),
+(123, 3, '2015-06-15 13:05:24', 'Login'),
+(124, 3, '2015-06-16 10:27:12', 'Login'),
+(125, 3, '2015-06-16 10:30:36', 'Logout'),
+(126, 3, '2015-06-16 10:40:29', 'Login'),
+(127, 3, '2015-06-16 10:43:34', 'Logout'),
+(128, 3, '2015-06-16 10:43:39', 'Login'),
+(129, 3, '2015-06-16 10:44:13', 'Logout'),
+(130, 3, '2015-06-16 10:44:35', 'Login'),
+(131, 3, '2015-06-16 10:45:22', 'Logout'),
+(132, 3, '2015-06-16 10:46:42', 'Login'),
+(133, 3, '2015-06-16 10:47:10', 'Logout'),
+(134, 1, '2015-06-16 10:47:20', 'Login'),
+(135, 1, '2015-06-16 10:49:50', 'Logout'),
+(136, 1, '2015-06-16 10:49:56', 'Login'),
+(137, 1, '2015-06-16 10:50:01', 'Logout'),
+(138, 3, '2015-06-16 10:50:08', 'Login'),
+(139, 3, '2015-06-16 10:54:47', 'Logout'),
+(140, 3, '2015-06-16 10:54:55', 'Login'),
+(141, 3, '2015-06-16 11:57:56', 'Logout'),
+(142, 1, '2015-06-16 11:59:26', 'Login'),
+(143, 1, '2015-06-16 11:59:31', 'Logout'),
+(144, 1, '2015-06-16 12:00:05', 'Login'),
+(145, 1, '2015-06-16 12:00:39', 'Logout'),
+(146, 1, '2015-06-16 12:03:03', 'Login'),
+(147, 1, '2015-06-16 12:03:12', 'Logout'),
+(148, 1, '2015-06-16 12:04:09', 'Login'),
+(149, 1, '2015-06-16 12:08:41', 'Logout'),
+(150, 3, '2015-06-16 12:08:47', 'Login'),
+(151, 3, '2015-06-16 12:18:44', 'Logout'),
+(152, 3, '2015-06-16 12:18:58', 'Login'),
+(153, 3, '2015-06-16 12:19:05', 'Logout'),
+(154, 3, '2015-06-16 12:19:12', 'Login'),
+(155, 3, '2015-06-16 12:20:08', 'Logout'),
+(156, 1, '2015-06-16 12:20:15', 'Login'),
+(157, 1, '2015-06-16 12:22:06', 'Logout'),
+(158, 1, '2015-06-16 12:22:14', 'Login'),
+(159, 1, '2015-06-16 12:22:22', 'Logout'),
+(160, 1, '2015-06-16 12:22:24', 'Login'),
+(161, 1, '2015-06-16 12:22:49', 'Logout'),
+(162, 1, '2015-06-16 12:22:50', 'Login'),
+(163, 1, '2015-06-16 12:23:02', 'Logout'),
+(164, 1, '2015-06-16 12:23:14', 'Login'),
+(165, 1, '2015-06-16 12:23:21', 'Logout'),
+(166, 1, '2015-06-16 12:23:26', 'Login'),
+(167, 1, '2015-06-16 12:41:42', 'Logout'),
+(168, 1, '2015-06-16 12:41:45', 'Login'),
+(169, 1, '2015-06-19 10:49:47', 'Login'),
+(170, 1, '2015-06-19 10:52:57', 'Logout'),
+(171, 1, '2015-06-19 11:05:52', 'Login'),
+(172, 1, '2015-06-19 11:37:59', 'Logout'),
+(173, 1, '2015-06-19 11:39:49', 'Login'),
+(174, 1, '2015-06-19 11:40:16', 'Logout'),
+(175, 1, '2015-06-19 11:42:28', 'Login');
 
 -- --------------------------------------------------------
 
@@ -165,19 +233,23 @@ INSERT INTO `log` (`id`, `userID`, `dt`, `type`) VALUES
 
 CREATE TABLE IF NOT EXISTS `permission` (
 `id` int(11) NOT NULL,
-  `permission` varchar(45) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `type` varchar(45) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `status` varchar(45) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+  `permission` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `type` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `status` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `permission`
 --
 
 INSERT INTO `permission` (`id`, `permission`, `type`, `status`) VALUES
-(1, 'ban', 'sobe', 'active'),
-(2, 'kick', 'kick', NULL),
-(3, 'addRole', '', NULL);
+(1, 'editProfile', '', 'deactive'),
+(2, 'addPerm', '', 'deactive'),
+(3, 'addRole', '', 'active'),
+(4, 'getUserPermissions', 'admin', 'active'),
+(5, 'loginUser', '', 'active'),
+(6, 'logoutUser', '', 'active'),
+(7, 'editProfile', '', 'active');
 
 -- --------------------------------------------------------
 
@@ -189,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `topicID` int(11) NOT NULL,
-  `data` text COLLATE utf8_croatian_mysql561_ci NOT NULL,
+  `data` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `dt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
@@ -201,18 +273,20 @@ CREATE TABLE IF NOT EXISTS `posts` (
 
 CREATE TABLE IF NOT EXISTS `role` (
 `id` int(11) NOT NULL,
-  `name` varchar(5) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `status` varchar(45) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+  `name` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `status` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id`, `name`, `status`) VALUES
-(1, 'Admin', NULL),
-(2, 'Mod', NULL),
-(3, 'VIP', NULL);
+(1, 'Admin', 'active'),
+(2, 'Mod', 'deactive'),
+(3, 'VIP', 'active'),
+(4, 'User', 'active'),
+(17, 'Asd', 'active');
 
 -- --------------------------------------------------------
 
@@ -225,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `rolePermission` (
   `dateAssigned` datetime NOT NULL,
   `roleId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `rolePermission`
@@ -234,7 +308,16 @@ CREATE TABLE IF NOT EXISTS `rolePermission` (
 INSERT INTO `rolePermission` (`id`, `dateAssigned`, `roleId`, `permissionId`) VALUES
 (1, '2015-06-04 00:00:00', 1, 1),
 (2, '0000-00-00 00:00:00', 1, 2),
-(3, '0000-00-00 00:00:00', 1, 3);
+(3, '0000-00-00 00:00:00', 1, 3),
+(4, '0000-00-00 00:00:00', 2, 2),
+(5, '0000-00-00 00:00:00', 1, 4),
+(6, '0000-00-00 00:00:00', 4, 5),
+(7, '0000-00-00 00:00:00', 4, 6),
+(8, '0000-00-00 00:00:00', 4, 7),
+(9, '0000-00-00 00:00:00', 1, 5),
+(10, '0000-00-00 00:00:00', 1, 6),
+(11, '0000-00-00 00:00:00', 1, 7),
+(12, '0000-00-00 00:00:00', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -244,11 +327,11 @@ INSERT INTO `rolePermission` (`id`, `dateAssigned`, `roleId`, `permissionId`) VA
 
 CREATE TABLE IF NOT EXISTS `room` (
 `id` int(11) NOT NULL,
-  `type` varchar(45) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `status` varchar(45) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
-  `password` varchar(45) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
-  `name` varchar(45) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `description` varchar(128) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
+  `type` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `status` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `description` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `userCount` int(11) DEFAULT NULL,
   `userMax` int(11) DEFAULT NULL,
   `creatorId` int(11) NOT NULL
@@ -263,10 +346,10 @@ CREATE TABLE IF NOT EXISTS `room` (
 CREATE TABLE IF NOT EXISTS `token` (
 `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `value` varchar(128) COLLATE utf8_croatian_mysql561_ci NOT NULL,
+  `value` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `created` datetime NOT NULL,
   `validTo` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `token`
@@ -339,7 +422,43 @@ INSERT INTO `token` (`id`, `userID`, `value`, `created`, `validTo`) VALUES
 (142, 1, '361afc0d07415fe4ffc756fd9c080d849cf93888', '2015-06-08 13:24:21', '2015-06-08 13:32:16'),
 (143, 1, '10c24eeed337a407f4e2197dc56aa6cb538c18c8', '2015-06-08 13:32:27', '2015-06-09 01:32:27'),
 (144, 1, '2f09fbcc57c3ac413c8359dbb681787edc05be3e', '2015-06-09 13:31:04', '2015-06-09 14:06:37'),
-(145, 3, '459647a8ff7f9186b4e46f28e32ec1c5e4a19063', '2015-06-09 14:06:45', '2015-06-09 14:09:47');
+(145, 3, '459647a8ff7f9186b4e46f28e32ec1c5e4a19063', '2015-06-09 14:06:45', '2015-06-09 14:09:47'),
+(146, 3, '834525e312f31564f393c70e490c2343ae784388', '2015-06-10 10:25:20', '2015-06-10 10:26:40'),
+(147, 1, '9f1652136d906c566c1b5562e3793e0a9cd3d23d', '2015-06-10 10:26:51', '2015-06-10 10:27:36'),
+(148, 3, 'af0f70e552d2381a3ca25cbfa4fbec79e6010b90', '2015-06-10 10:27:45', '2015-06-10 10:40:49'),
+(149, 1, '786b4cda0eeaafa3cd169b7b6419fedb6d5ad942', '2015-06-10 10:41:00', '2015-06-10 10:41:46'),
+(150, 3, '6d38a3235d64eb9666e612762da000de9f0d7314', '2015-06-10 10:41:58', '2015-06-10 11:53:18'),
+(151, 1, '1b77b6c32a31f814420fa4a92e0455b5f6b0937c', '2015-06-10 11:53:25', '2015-06-10 23:53:25'),
+(152, 3, '3f12b6f54a772deac00619f6ab6dfa3cb40bd76c', '2015-06-15 10:56:05', '2015-06-15 12:51:42'),
+(153, 1, '53d16619f9b3a2670b4d3590cb8c724011d07dc4', '2015-06-15 13:05:05', '2015-06-15 13:05:12'),
+(154, 3, '41976c6c851afb2a6d34a2580a83b8a76ca88b43', '2015-06-15 13:05:24', '2015-06-16 01:05:24'),
+(155, 3, '1a29cc0b64831d5e0e318f3af52d6e71f5592fb8', '2015-06-16 10:27:12', '2015-06-16 10:30:36'),
+(156, 3, '33c258668dc0a6f4f0b4e502ada43fecc47d6a81', '2015-06-16 10:40:29', '2015-06-16 10:43:34'),
+(157, 3, 'b061b77050e0d9624cec3deede3bbbcaa1f28ccd', '2015-06-16 10:43:39', '2015-06-16 10:44:13'),
+(158, 3, '3eef0495c67892ffd5fb2977705a74e9195b84fb', '2015-06-16 10:44:35', '2015-06-16 10:45:22'),
+(159, 3, '0c93fff4f8ec7f3684c71739aa0be851475619c2', '2015-06-16 10:46:42', '2015-06-16 10:47:10'),
+(160, 1, 'bedea80a4e70664d665e5fee880c8d98da9e2dbf', '2015-06-16 10:47:20', '2015-06-16 10:49:50'),
+(161, 1, '2132c1c4f713ed36af0907f2f267a7453fa56c7a', '2015-06-16 10:49:56', '2015-06-16 10:50:01'),
+(162, 3, '388a82542a5ad245eed1812b92cb15118f97aa39', '2015-06-16 10:50:08', '2015-06-16 10:54:47'),
+(163, 3, '5bcbd73371d4194b4460009bfa1092c24502d43e', '2015-06-16 10:54:55', '2015-06-16 11:57:56'),
+(164, 1, '4b393e587afb9cc2d4f6706fb1e04e7e80d644bb', '2015-06-16 11:59:26', '2015-06-16 11:59:31'),
+(165, 1, '0cfdde6d9e25a1a7fb963352d70564287e70a2e6', '2015-06-16 12:00:05', '2015-06-16 12:00:40'),
+(166, 1, 'dc72ce81a17145d25d474633e180e7b502a5f40e', '2015-06-16 12:03:02', '2015-06-16 12:03:12'),
+(167, 1, '1b510edb33d2208a5851243b7bb9619fe195e5e4', '2015-06-16 12:04:09', '2015-06-16 12:08:41'),
+(168, 3, '3c5ff6c1b096a6a528d43f972576ce3a0cb413dd', '2015-06-16 12:08:47', '2015-06-16 12:18:44'),
+(169, 3, '22a2f07069adc2ab72b88043a28e2b22012d6425', '2015-06-16 12:18:57', '2015-06-16 12:19:05'),
+(170, 3, 'd5f52a35b99f288cc34661be5f374d69d7ebb0e4', '2015-06-16 12:19:12', '2015-06-16 12:20:08'),
+(171, 1, '4cfc5d3ad574ccaa0f061382209024b1ce6d1b99', '2015-06-16 12:20:15', '2015-06-16 12:22:06'),
+(172, 1, '9544cfbc2abb04eedd46823f1901a7606cadb2ba', '2015-06-16 12:22:14', '2015-06-16 12:22:22'),
+(173, 1, '2750b10456eb9d7def1372c09fc3bda07e444235', '2015-06-16 12:22:24', '2015-06-16 12:22:49'),
+(174, 1, '9820fd79a7500e521d96af4ee29900147dafa561', '2015-06-16 12:22:50', '2015-06-16 12:23:02'),
+(175, 1, 'c5075fa33fc38150f228c989c1d1858dc9befe93', '2015-06-16 12:23:14', '2015-06-16 12:23:21'),
+(176, 1, '7bb3a5e0916ff88789a494d0ad1f5018702a3c0c', '2015-06-16 12:23:26', '2015-06-16 12:41:42'),
+(177, 1, '2ffd4a905839494f2c0e2c28eb242bea9ceda106', '2015-06-16 12:41:45', '2015-06-17 00:41:45'),
+(178, 1, '123f354d12d6510c0f6bd7a29468f74859175cbb', '2015-06-19 10:49:47', '2015-06-19 10:52:57'),
+(179, 1, '6faeb407b2833d8fecf82e28d2bca7a29aca23ec', '2015-06-19 11:05:52', '2015-06-19 11:37:59'),
+(180, 1, 'fc3b1cf95c7cac54e8b4687635fbb03cf700cb12', '2015-06-19 11:39:49', '2015-06-19 11:40:16'),
+(181, 1, 'a6a3e203a3de09c7fde8076d5508cb6965739ea7', '2015-06-19 11:42:28', '2015-06-19 23:42:28');
 
 -- --------------------------------------------------------
 
@@ -352,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `userID` int(11) NOT NULL,
   `forumID` int(11) NOT NULL,
   `dt` datetime NOT NULL,
-  `title` varchar(255) COLLATE utf8_croatian_mysql561_ci NOT NULL
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 -- --------------------------------------------------------
@@ -363,19 +482,19 @@ CREATE TABLE IF NOT EXISTS `topic` (
 
 CREATE TABLE IF NOT EXISTS `user` (
 `id` int(11) NOT NULL,
-  `username` char(32) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `password` char(64) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `surname` varchar(255) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_croatian_mysql561_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+  `username` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `surname` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `surname`, `email`) VALUES
-(1, 'hugomo', 'cc03e747a6afbbcbf8be7668acfebee5', 'drazen', 'neko prezime', 'drazen.a@gmail.com'),
+(1, 'hugomo', 'cc03e747a6afbbcbf8be7668acfebee5', 'Drazen', 'neko prezime', 'drazen.a@gmail.com'),
 (2, 'kristina', '098f6bcd4621d373cade4e832627b4f6', 'kristina', 'jozic', 'jozic.tina@gmail.com'),
 (3, 'nikola', '098f6bcd4621d373cade4e832627b4f6', 'Nikola', 'Krtalic', 'krtalic.nikola@gmail.com');
 
@@ -390,8 +509,8 @@ CREATE TABLE IF NOT EXISTS `userRole` (
   `userId` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `dateAssigned` date NOT NULL,
-  `roomId` varchar(45) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+  `roomId` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 --
 -- Dumping data for table `userRole`
@@ -399,7 +518,8 @@ CREATE TABLE IF NOT EXISTS `userRole` (
 
 INSERT INTO `userRole` (`id`, `userId`, `roleId`, `dateAssigned`, `roomId`) VALUES
 (1, 3, 1, '2015-06-10', NULL),
-(2, 3, 2, '0000-00-00', NULL);
+(2, 3, 2, '0000-00-00', NULL),
+(3, 1, 4, '0000-00-00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -484,12 +604,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=108;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=176;
 --
 -- AUTO_INCREMENT for table `permission`
 --
 ALTER TABLE `permission`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `posts`
 --
@@ -499,12 +619,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `rolePermission`
 --
 ALTER TABLE `rolePermission`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `room`
 --
@@ -514,7 +634,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `token`
 --
 ALTER TABLE `token`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=146;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
 --
 -- AUTO_INCREMENT for table `topic`
 --
@@ -524,12 +644,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `userRole`
 --
 ALTER TABLE `userRole`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
