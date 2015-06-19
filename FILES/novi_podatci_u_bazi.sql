@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `forum` (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `log` (
   `userID` int(10) unsigned NOT NULL,
   `dt` datetime NOT NULL,
   `type` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `log`
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `permission` (
   `permission` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `type` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `status` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `permission`
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `topicID` int(11) NOT NULL,
   `data` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `dt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `role` (
 `id` int(11) NOT NULL,
   `name` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `status` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `role`
@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `rolePermission` (
   `dateAssigned` datetime NOT NULL,
   `roleId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `rolePermission`
@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `userCount` int(11) DEFAULT NULL,
   `userMax` int(11) DEFAULT NULL,
   `creatorId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -349,7 +349,7 @@ CREATE TABLE IF NOT EXISTS `token` (
   `value` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `created` datetime NOT NULL,
   `validTo` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `token`
@@ -472,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `forumID` int(11) NOT NULL,
   `dt` datetime NOT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -487,7 +487,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `surname` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
@@ -510,7 +510,7 @@ CREATE TABLE IF NOT EXISTS `userRole` (
   `roleId` int(11) NOT NULL,
   `dateAssigned` date NOT NULL,
   `roomId` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `userRole`
