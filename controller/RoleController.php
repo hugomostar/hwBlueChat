@@ -1,11 +1,6 @@
 <?php
-	require_once "DAL/baza.php";
-	require_once "DAL/db.php";
-	require_once "model/role.php";
-	require_once "model/rolePermission.php";
-	require_once "model/token.php";
 
-	class role_controller 
+	class RoleController 
 	{
 
 		private $data;

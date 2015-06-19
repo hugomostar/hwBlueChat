@@ -5,7 +5,7 @@ class Token
 	public function isLogedIn()
 	{
 		$token = isset($_COOKIE['token']) ? $_COOKIE['token'] : NULL;	
-		$db = Baza::$db;
+		$db = DB::$db;
 		$userID = FALSE;		
 			if (!empty($token)) {
 			$token = $db->real_escape_string($token);
@@ -27,7 +27,7 @@ class Token
 	public function create($idUser)
 	{
 		$token = $this->generate();
-		$db = Baza::$db;
+		$db = DB::$db;
 		$sql = "INSERT INTO token (userID, value, created, validTo) VALUES ($idUser, '$token', NOW(), DATE_ADD(NOW(), INTERVAL 12 HOUR))";
 		$db->query($sql);
 		setcookie('token', $token);
@@ -36,7 +36,7 @@ class Token
 	
 	public function delete()
 	{
-	 	$db = Baza::$db;
+	 	$db = DB::$db;
 					
        	$sqlLog = "SELECT userID FROM token WHERE value = '".$_COOKIE['token']."'";
        	$r=$db->query($sqlLog);

@@ -1,5 +1,4 @@
 <?php
-	include "model/user.php";
 
 	class rolePermission {
 		private $userId;
@@ -30,7 +29,7 @@
 		protected function initRoles() {
 			$sql = "SELECT userRole.roleId, role.name FROM userRole 
 				JOIN role ON userRole.roleId = role.id WHERE userRole.userId = ? AND role.status = 'active'";
-			$sth = Baza::$db->prepare($sql);
+			$sth = DB::$db->prepare($sql);
 			$sth->bind_param("i", $this->userId);
 			$sth->execute();
 			$result1 = $sth->get_result();
@@ -45,7 +44,7 @@
 			$sql = "SELECT permission.id, permission.permission FROM rolePermission 
                 JOIN permission ON rolePermission.permissionId = permission.id
                 WHERE rolePermission.roleId = ? AND permission.status = 'active'";
-			$sth = Baza::$db->prepare($sql);
+			$sth = DB::$db->prepare($sql);
 			$sth->bind_param("i", $role_id);
 			
 			if (!$sth->execute()) {

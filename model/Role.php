@@ -15,7 +15,7 @@
 
 		public function addRole() {
 			$sql = "INSERT INTO role (name) VALUES (?)";
-			$result = Baza::$db->prepare($sql);
+			$result = DB::$db->prepare($sql);
 			$result->bind_param("s", $this->name);
 			
 			if (!$result->execute()) {
@@ -30,7 +30,7 @@
 
 		public function changeRoleStatus() {
 			$sql = "UPDATE role set status = ? WHERE name = ?";
-			$result = Baza::$db->prepare($sql);
+			$result = DB::$db->prepare($sql);
 			$result->bind_param("ss", $this->status, $this->name);
 			$result->execute();
 			return $this->name;

@@ -1,11 +1,6 @@
 <?php
-	require_once "DAL/baza.php";
-	require_once "DAL/db.php";
-	require_once "model/role.php";
-	require_once "model/rolePermission.php";
-	require_once "model/token.php";
 
-class rolePermission_controller {
+class RolePermissionController {
 	
 		private $data;
 
@@ -15,7 +10,7 @@ class rolePermission_controller {
 
 		public function getUserPermissions($userId){
 
-			$user = rolePermission::getById($userId);
+			$user = RolePermission::getById($userId);
 			$roles = $user->roles;
 			$array = [];
 						
@@ -31,7 +26,7 @@ class rolePermission_controller {
 		
 		public function ban($userId){
 
-			$user = rolePermission::getById($userId);
+			$user = RolePermission::getById($userId);
 			$roles = $user->roles;
 			$array = [];
 						

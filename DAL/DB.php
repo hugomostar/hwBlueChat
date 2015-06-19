@@ -1,7 +1,7 @@
 <?php
 
 
-class Baza extends mysqli
+class DB extends mysqli
 {
 	
 	public static $db;

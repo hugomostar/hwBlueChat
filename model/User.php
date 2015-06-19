@@ -18,7 +18,7 @@ class User
 	public function updateUserProfile($name, $arg, $userID) {
 		
 		$sql = "UPDATE user set $name = ? WHERE id = ?"; 
-		$result = Baza::$db->prepare($sql);		
+		$result = DB::$db->prepare($sql);		
 		$result->bind_param("si", $arg, $userID);	
 		$result->execute();
 		$res = $result->get_result();
@@ -30,7 +30,7 @@ class User
 		
 		$password = md5($password);
 		$sql = "SELECT * FROM user WHERE username = ? AND password = ?";		
-		$result = Baza::$db->prepare($sql);
+		$result = DB::$db->prepare($sql);
 		$result->bind_param("ss", $username, $password);	
 		$result->execute();
 		$res = $result->get_result();
@@ -41,7 +41,7 @@ class User
 	public function register($username, $password, $firstname, $lastname, $email) {		
 		
 		$sql = "INSERT INTO user (username, password, name, surname, email) VALUES (?, ?, ?, ?, ?)"; 	
-		$result = Baza::$db->prepare($sql);
+		$result = DB::$db->prepare($sql);
 		$result->bind_param("sssss", $username, $password, $firstname, $lastname, $email);	
 		$result->execute();
 		return $result;

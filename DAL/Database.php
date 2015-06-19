@@ -1,9 +1,9 @@
 <?php
 
 require_once '/etc/chat/db_config.php';
-require_once 'baza.php';
+require_once 'DB.php';
 
-new Baza($dbCfg['host'], $dbCfg['username'], 
+new DB($dbCfg['host'], $dbCfg['username'], 
 	$dbCfg['password'], $dbCfg['db']);
 
 

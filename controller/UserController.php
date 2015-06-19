@@ -1,23 +1,17 @@
 <?php
-	require_once "DAL/baza.php";
-	require_once "DAL/db.php";
-	include 'model/token.php';
-	include 'helper/validate.php';
-	include 'model/log.php';
-	require_once "model/rolePermission.php";
 
-
- 
-	class user_controller {
+	class UserController {
+		
 		private $data;
-		public
-		function __construct($data){
+		public function __construct($data){
+			
 			$this->data = $data;
+			
 		}
 
-		public function login() {
+		public function loginUser() {
 
-			$db = Baza::$db;
+			$db = DB::$db;
 			$user = new User($this->data,array('username', 'password'));
 
 			$result = $user->login($user->username, $user->password);
@@ -35,7 +29,7 @@
 			return "User $userID->id successfully logged in!";
 		}
 
-		public function register() {
+		public function registerUser() {
 			
 			$valid = new Valid();
 			$validResult = $valid->isValid($this->data);
@@ -44,10 +38,10 @@
 				return $validResult;
 			}
 
-			$db = Baza::$db;
+			$db = DB::$db;
 			$user = new User($this->data,array('username', 'password', 'firstname', 'lastname', 'email'));
 			
-			if ($this->check()==TRUE){
+			if ($this->checkUserExists()==TRUE){
 				return "Username or e-mail already registered.";
 			}
 
@@ -61,7 +55,7 @@
 
 		}
 
-		public function logout() {
+		public function logoutUser() {
 			
 			$tok = new Token();
 			$result = $tok->delete();
@@ -74,10 +68,10 @@
 
 		}
 
-		public function check() {
+		public function checkUserExists() {
 
 			$sql="SELECT * FROM user WHERE username = '".$this->data['username']."' OR email = '".$this->data['email']."'";
-			$result = Baza::$db->query($sql);
+			$result = DB::$db->query($sql);
 			
 			if ($result->num_rows === 0) {
 				return false;

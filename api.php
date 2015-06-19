@@ -1,7 +1,28 @@
 <?php
+foreach (glob("controller/*.php") as $filename)
+{
+    include $filename;
+}
 
+foreach (glob("model/*.php") as $filename)
+{
+    include $filename;
+}
+
+foreach (glob("helper/*.php") as $filename)
+{
+    include $filename;
+}
+
+foreach (glob("DAL/*.php") as $filename)
+{
+    include $filename;
+}
+
+require __DIR__ . '/vendor/autoload.php';
 
 $params = $_REQUEST;
+
 $action = $params['action'];
 $controller = $params['controller'];
 $token = isset($_COOKIE['token']) ? $_COOKIE['token'] : NULL;
@@ -25,33 +46,33 @@ if( method_exists($controller, $action) === false ) {
 
 $userId = Token::isLogedIn($token);
 
-$guestActions = array('login', 'register');
+$guestActions = array('loginUser', 'registerUser');
 
 if(in_array($action, $guestActions)) {
 	if (empty($userId)){
 	$result["data"] = $controller->$action();
 	$result["success"] = true;
-	print_r($result);
+	dump($result);
 	} else {
 		$result["data"] = "Already logged in, please logout to do this action!";
 		$result["success"] = false;
-		print_r($result);
+		dump($result);
 		exit();
 	}
 } else {			
 
 if ($userId){
 	
-	$userPerm = rolePermission::getById($userId);
+	$userPerm = RolePermission::getById($userId);
 	
 	if($userPerm->hasPrivilege($action)) {
 	$result["data"] = $controller->$action($userId);
 	$result["success"] = true;
-	print_r($result);
+	dump($result);
 } else {
 	$result["data"] = "You don't have privilege '$action'";
 	$result["success"] = false;
-	print_r($result);
+	dump($result);
 	exit();
 	}
 	
@@ -59,7 +80,7 @@ if ($userId){
 		
 	$result["data"] = "User is not logged in!";
 	$result["success"] = false;
-	print_r($result);
+	dump($result);
 }
 
 }

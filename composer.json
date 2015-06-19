@@ -1,0 +1,12 @@
+{
+    "name": "vagrant/hw-blue-chat",
+    "authors": [
+        {
+            "name": "Drazen",
+            "email": "drazen.a@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "~2.7"
+    }
+}
