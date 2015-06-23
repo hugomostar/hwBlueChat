@@ -42,8 +42,8 @@
 		$resultGet = DB::$db->prepare($sqlGet);
 		$resultGet->bind_param("s", $name);	
 		$resultGet->execute();
-		$res = $resultGet->get_result();
-		$idResult = $res->fetch_object();
+		$resGet = $resultGet->get_result();
+		$idResult = $resGet->fetch_object();
 		$roleId = $idResult->id;
 
 		$sqlInsert = "INSERT INTO userRole (roleId, userId, dateAssigned) 
@@ -52,6 +52,9 @@
 		$resultInsert = DB::$db->prepare($sqlInsert);
 		$resultInsert->bind_param("ssss", $roleId, $userId, $roleId, $userId);	
 		$resultInsert->execute();
+		$resInsert = $resultInsert->get_result();
+		
+		return $resultInsert->affected_rows;
 		
 		}
 

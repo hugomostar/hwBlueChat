@@ -23,23 +23,6 @@ class RolePermissionController {
 			return $merged;
 		
 		}
-		
-		public function ban($userId){
-
-			$user = RolePermission::getById($userId);
-			$roles = $user->roles;
-			$array = [];
-						
-			foreach ($roles as $obj) {
-				array_push($array, $obj->permissions);
-			}
-			
-			$merged = call_user_func_array('array_merge', $array);
-			
-			return $merged;
-			
-		}
-			
 			
 		public function grantUserRole() {
 			
@@ -49,11 +32,13 @@ class RolePermissionController {
 			$userId = User::getByUsername($username);	
 			
 			$role = Role::grantUserRole($userId, $roleName);
-					
+			
+			if ($role === 0) {
+				return "User already posseses role '$roleName'";
+				} else {
+					return "Role '$roleName' has been assigned to '$username'";
+				}
+			
 			}
-		
-		
-		
-		
 		
 }
