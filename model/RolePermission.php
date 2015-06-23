@@ -1,26 +1,16 @@
 <?php
 
 	class rolePermission {
-		private $userId;
-		private $dateAssigned;
-		private $roleId;
-		private $permissionId;
-		public $permissions;
-
-		public function __construct($data,$required){
-			for ($i = 0; $i < count($required); $i++) {
-				$this->$required[$i] = $data["$required[$i]"];
-			}
-
-		}
-
-		public static function getById($userId) {
+		
+		public static function getById($userId) {				
 			
 			if (!empty($userId)) {
-				$privUser = new rolePermission($userId, array('userId'));
+				
+				$privUser = new rolePermission();
+				$privUser->userId = $userId;
 				$privUser->initRoles();
 				return $privUser;
-			} else {
+				} else {
 				return false;
 			}
 
@@ -60,12 +50,7 @@
 			return $role;
 		}
 
-		// provjeri ima li rola odreÄ�enu permisiju
-		public function hasPerm($permission) {
-			return isset($this->permissions[$permission]);
-		}
-
-		// provjeri ima li korisnik odreÄ�enu permisiju 
+		// provjeri ima li korisnik odredjenu permisiju 
 		public function hasPrivilege($perm) {
 			foreach ($this->roles as $role) {
 				
@@ -74,8 +59,11 @@
 				}
 
 			}
-
 			return false;
+		}
+		
+		public function hasPerm($permission) {
+			return isset($this->permissions[$permission]);
 		}
 
 	}

@@ -37,6 +37,23 @@ class RolePermissionController {
 			$merged = call_user_func_array('array_merge', $array);
 			
 			return $merged;
-		
+			
 		}
+			
+			
+		public function grantUserRole() {
+			
+			$username = $this->data['username'];
+			$roleName = $this->data['name'];
+			
+			$userId = User::getByUsername($username);	
+			
+			$role = Role::grantUserRole($userId, $roleName);
+					
+			}
+		
+		
+		
+		
+		
 }

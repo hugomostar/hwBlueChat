@@ -17,10 +17,11 @@
 			
 		}
 
-		public function changeStatus() {
+		public function changeRoleStatus() {
 			
 			$role = new Role($this->data, array('name', 'status'));
-			$role->changeRoleStatus();
+			$result = $role->changeRoleStatus();
+			return "Role '$result' is changed to '" .$this->data['status']. "'.";
 			
 		}
 

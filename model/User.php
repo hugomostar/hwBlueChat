@@ -47,4 +47,16 @@ class User
 		return $result;
 		}
 
+	public function getByUsername($username) {
+		
+		$sql = "SELECT id FROM user WHERE username = ?";		
+		$result = DB::$db->prepare($sql);
+		$result->bind_param("s", $username);	
+		$result->execute();
+		$res = $result->get_result();
+		$id = $res->fetch_object();
+		return $id->id;
+		
+	}
+
 }

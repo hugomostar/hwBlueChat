@@ -49,6 +49,7 @@ $userId = Token::isLogedIn($token);
 $guestActions = array('loginUser', 'registerUser');
 
 if(in_array($action, $guestActions)) {
+	
 	if (empty($userId)){
 	$result["data"] = $controller->$action();
 	$result["success"] = true;
@@ -61,26 +62,26 @@ if(in_array($action, $guestActions)) {
 	}
 } else {			
 
-if ($userId){
+	if ($userId){
 	
-	$userPerm = RolePermission::getById($userId);
+		$userPerm = RolePermission::getById($userId);
 	
-	if($userPerm->hasPrivilege($action)) {
-	$result["data"] = $controller->$action($userId);
-	$result["success"] = true;
-	dump($result);
-} else {
-	$result["data"] = "You don't have privilege '$action'";
-	$result["success"] = false;
-	dump($result);
-	exit();
-	}
+			if($userPerm->hasPrivilege($action)) {
+			$result["data"] = $controller->$action($userId);
+			$result["success"] = true;
+			dump($result);
+			} else {
+				$result["data"] = "You don't have privilege '$action'";
+				$result["success"] = false;
+				dump($result);
+				exit();
+				}
 	
-} else {
+	} else {
 		
-	$result["data"] = "User is not logged in!";
-	$result["success"] = false;
-	dump($result);
-}
+		$result["data"] = "User is not logged in!";
+		$result["success"] = false;
+		dump($result);
+	}
 
 }
