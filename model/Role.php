@@ -38,23 +38,23 @@
 		
 		public static function grantUserRole($userId, $name) {		
 			
-		$sqlGet = "SELECT id FROM role WHERE name = ?";		
-		$resultGet = DB::$db->prepare($sqlGet);
-		$resultGet->bind_param("s", $name);	
-		$resultGet->execute();
-		$resGet = $resultGet->get_result();
-		$idResult = $resGet->fetch_object();
-		$roleId = $idResult->id;
+			$sqlGet = "SELECT id FROM role WHERE name = ?";		
+			$resultGet = DB::$db->prepare($sqlGet);
+			$resultGet->bind_param("s", $name);	
+			$resultGet->execute();
+			$resGet = $resultGet->get_result();
+			$idResult = $resGet->fetch_object();
+			$roleId = $idResult->id;
 
-		$sqlInsert = "INSERT INTO userRole (roleId, userId, dateAssigned) 
+			$sqlInsert = "INSERT INTO userRole (roleId, userId, dateAssigned) 
 					  SELECT ?, ?, NOW() FROM DUAL WHERE NOT EXISTS 
 					  (SELECT id FROM userRole WHERE roleId = ? AND userId = ?);";		
-		$resultInsert = DB::$db->prepare($sqlInsert);
-		$resultInsert->bind_param("ssss", $roleId, $userId, $roleId, $userId);	
-		$resultInsert->execute();
-		$resInsert = $resultInsert->get_result();
+			$resultInsert = DB::$db->prepare($sqlInsert);
+			$resultInsert->bind_param("ssss", $roleId, $userId, $roleId, $userId);	
+			$resultInsert->execute();
+			$resInsert = $resultInsert->get_result();
 		
-		return $resultInsert->affected_rows;
+			return $resultInsert->affected_rows;
 		
 		}
 

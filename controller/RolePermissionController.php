@@ -27,18 +27,32 @@ class RolePermissionController {
 		public function grantUserRole() {
 			
 			$username = $this->data['username'];
-			$roleName = $this->data['name'];
+			$roleName = $this->data['roleName'];
 			
 			$userId = User::getByUsername($username);	
 			
-			$role = Role::grantUserRole($userId, $roleName);
+			$affected = Role::grantUserRole($userId, $roleName);
 			
-			if ($role === 0) {
-				return "User already posseses role '$roleName'";
+			if ($affected === 0) {
+				return "User '$username' already posseses role '$roleName'";
 				} else {
 					return "Role '$roleName' has been assigned to '$username'";
 				}
 			
 			}
 		
+		public function addPermToRole() {
+			
+			$role = $this->data['roleName'];
+			$permission = $this->data['permissionName'];
+			
+			$affected = Permission::addPermToRole($role, $permission);
+			
+			if ($affected === 0) {
+				return "Role '$role' already posseses permission '$permission'";
+				} else {
+					return "Permission '$permission' has been assigned to role '$role'";
+				}
+			
+			}
 }
